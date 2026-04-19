@@ -1,0 +1,14 @@
+body {
+  font-family: sans-serif;
+  padding: 20px;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  margin: 6px 0;
+}
+
+.low { color: red; }
+.medium { color: orange; }
+.high { color: green; }
