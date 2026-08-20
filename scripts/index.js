@@ -5,6 +5,7 @@ let currentSectionId = null;
 
 function renderSections() {
     console.log('Rendering sections...');
+
     const container = document.getElementById('sections-container');
     container.innerHTML = '';
 
@@ -15,12 +16,69 @@ function renderSections() {
         container.appendChild(button);
 
         button.addEventListener('click', () => {
-    currentSectionId = section.id;
+            currentSectionId = section.id;
 
-document.getElementById('new-item')
-.style.display = 'block';
-});
+            renderItems();
+
+            document.getElementById('new-item')
+                .style.display = 'block';
+        });
     });
+};
+
+function renderItems() {
+    console.log('Rendering items...');
+
+    const activeSection = sectionArray.find(
+        section => section.id === currentSectionId);
+
+        console.log(activeSection);
+    
+        const container = document.getElementById('items-container');
+        container.innerHTML = '';
+
+        activeSection.items.forEach(item => {
+            const itemElement = 
+            document.createElement('div');
+
+            itemElement.textContent = 
+            `${item.name} - ${item.amount}`;
+
+            container.appendChild(itemElement);
+
+            const minusButton = document.createElement('button');
+            minusButton.textContent = '-';
+
+            minusButton.addEventListener('click', () => {
+                changeItemAmount(activeSection.id, item.id, -1);
+            });
+
+            const plusButton = document.createElement('button');
+            plusButton.textContent = '+';
+
+            plusButton.addEventListener('click', () => {
+                changeItemAmount(activeSection.id, item.id, 1);
+            });
+
+            container.appendChild(minusButton);
+            container.appendChild(plusButton);
+        });
+};
+
+function changeItemAmount(sectionId, itemId, change) {
+    const section = sectionArray.find(
+        sec => sec.id === sectionId);
+
+    if (section) {
+        const item = section.items.find(
+            it => it.id === itemId);
+
+        if (item) {
+            item.amount += change;
+            if (item.amount < 0) item.amount = 0;
+            renderItems();
+        }
+    }
 };
 
 //SECTION LOGIC
@@ -59,6 +117,7 @@ document.getElementById('submit-item')
 document.getElementById('item-name').value = '';
 section.items.push(item);
 renderSections();
+renderItems();
 });
 
 //This section makes sure the new section form is hidden when the page loads and shows it when the create section button is clicked.

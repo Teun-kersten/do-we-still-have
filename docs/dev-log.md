@@ -23,3 +23,21 @@
 - Render items belonging to the active section.
 - Refactor section creation into a dedicated 'addSection()' function.
 - Write logic to render buttons to increase and decrease the amount value of the items and make it functional.
+
+### 20/8/2026
+
+### Progress
+- Added item functionality
+- created buttons to increase and decrease item value
+- the active sections render the items belonging to them with the correct values
+
+#### Learning
+- Increasing experience with building more complicated objects
+- Learning how to build more complicated functions
+- Learning how to make functions work together more practically
+
+#### Next steps
+- integrate localStorage
+- include a function that colours the items red once depleted
+- add delete buttons
+- add edit buttons
