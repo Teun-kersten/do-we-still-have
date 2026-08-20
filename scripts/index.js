@@ -44,7 +44,6 @@ function renderItems() {
             itemElement.textContent = 
             `${item.name} - ${item.amount}`;
 
-            container.appendChild(itemElement);
 
             const minusButton = document.createElement('button');
             minusButton.textContent = '-';
@@ -61,6 +60,7 @@ function renderItems() {
             });
 
             container.appendChild(minusButton);
+            container.appendChild(itemElement);
             container.appendChild(plusButton);
         });
 };

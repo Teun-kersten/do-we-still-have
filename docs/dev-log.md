@@ -30,6 +30,7 @@
 - Added item functionality
 - created buttons to increase and decrease item value
 - the active sections render the items belonging to them with the correct values
+- added some very basic CSS
 
 #### Learning
 - Increasing experience with building more complicated objects
